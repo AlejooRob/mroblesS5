@@ -61,5 +61,47 @@ namespace mroblesS5.Repositories
             }
             return new List<Persona>();
         }
+        public void UpdatePersona(int id, string nombre)
+        {
+            try
+            {
+                var persona = conn.Table<Persona>().FirstOrDefault(p => p.Id == id);
+                if (persona != null)
+                {
+                    persona.Name = nombre;
+                    conn.Update(persona);
+                    statusMessage = "Persona actualizada correctamente";
+                }
+                else
+                {
+                    statusMessage = "Persona no encontrada";
+                }
+            }
+            catch (Exception ex)
+            {
+                statusMessage = $"Error al actualizar: {ex.Message}";
+            }
+        }
+
+        public void DeletePersona(int id)
+        {
+            try
+            {
+                var persona = conn.Table<Persona>().FirstOrDefault(p => p.Id == id);
+                if (persona != null)
+                {
+                    conn.Delete(persona);
+                    statusMessage = "Persona eliminada correctamente";
+                }
+                else
+                {
+                    statusMessage = "Persona no encontrada";
+                }
+            }
+            catch (Exception ex)
+            {
+                statusMessage = $"Error al eliminar: {ex.Message}";
+            }
+        }
     }
 }

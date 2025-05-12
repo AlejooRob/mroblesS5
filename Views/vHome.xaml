@@ -6,42 +6,56 @@
     <VerticalStackLayout
         Spacing="20"
         Padding="20">
-        <Label x:Name="lblMsg"
-               Text="Semana 5 SQLite"
-               FontSize="20"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Entry x:Name="txtId"
+       Placeholder="Ingrese ID"
+       Keyboard="Numeric" />
+
         <Entry x:Name="txtNombre"
-               Placeholder="Ingrese Nombre" />
-        <Grid
-            ColumnDefinitions="*"
-            RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+       Placeholder="Ingrese Nombre" />
+
+        <Grid ColumnDefinitions="*"
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
             <Button x:Name="btnInsertar"
-                    Text="Insertar"
-                    Clicked="btnInsertar_Clicked"
-                    Grid.Row="0"
-                    Grid.Column="0" />
+            Text="Insertar"
+            Clicked="btnInsertar_Clicked"
+            Grid.Row="0"
+            Grid.Column="0" 
+            Margin="5"/>
+
+            <Button x:Name="btnEditar"
+            Text="Editar"
+            Clicked="btnEditar_Clicked"
+            Grid.Row="1"
+            Grid.Column="0" 
+            Margin="5"/>
+
+            <Button x:Name="btnEliminar"
+            Text="Eliminar"
+            Clicked="btnEliminar_Clicked"
+            Grid.Row="2"
+            Grid.Column="0" 
+            Margin="5"/>
+
             <Label x:Name="lblstatusMsg"
-                   FontSize="18"
-                   TextColor="Red"
-                   Grid.Row="1"
-                   Grid.Column="0" />
+           FontSize="18"
+           TextColor="Red"
+           Grid.Row="3"
+           Grid.Column="0" />
+
             <Button x:Name="btnListar"
-                    Text="Listar personas"
-                    Clicked="btnListar_Clicked"
-                    Grid.Row="2"
-                    Grid.Column="0" />
+            Text="Listar personas"
+            Clicked="btnListar_Clicked"
+            Grid.Row="4"
+            Grid.Column="0" 
+            Margin="5"/>
+
             <CollectionView x:Name="cwListPersonas"
-                            Grid.Row="3">
+                    Grid.Row="5">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid
-                            ColumnDefinitions="*,*">
-                            <Label Text="{Binding Id}"
-                                   Grid.Column="0" />
-                            <Label Text="{Binding Name}"
-                                   Grid.Column="1" />
-
+                        <Grid ColumnDefinitions="*,*">
+                            <Label Text="{Binding Id}" Grid.Column="0" />
+                            <Label Text="{Binding Name}" Grid.Column="1" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
